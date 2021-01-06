@@ -182,6 +182,25 @@ public class ErrorLogHelperTest {
         }
     }
 
+    @Test
+    public void createErrorLogWithCustomErrorFolder() throws java.lang.Exception {
+
+        /* Dummy coverage of utils class. */
+        new ErrorLogHelper();
+
+        /* Custom Name Directory. */
+        String customNameDirectory = "CUSTOM_ERROR_LOG_DIRECTORY";
+
+        /* Set up Custom Error Folder. */
+        ErrorLogHelper.setCustomErrorDirectory(customNameDirectory);
+        File errorLogFolder = mTemporaryFolder.newFolder(customNameDirectory);
+        ErrorLogHelper.setErrorLogDirectory(errorLogFolder);
+        String folderName = ErrorLogHelper.getErrorStorageDirectory().getName();
+
+        assertEquals(customNameDirectory,folderName);
+
+    }
+
     private void sanityCheck(Exception exception) {
         assertNotNull(exception);
         assertNotNull(exception.getType());
